@@ -1,36 +1,28 @@
 package com.api.ems.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public  abstract class Tarif {
+@Data
+@Entity
+public  class Tarif {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long idTarif;
     private  int poidSup;
     private int poidInf;
+    private  int puz1;
+    private int puz2;
+    private  int puz3;
 
-    public long getId_tarif() {
-        return idTarif;
+
     }
 
-    public void setId_tarif(long id_tarif) {
-        this.idTarif = id_tarif;
-    }
-
-    public int getPoidSup() {
-        return poidSup;
-    }
-
-    public void setPoidSup(int poidSup) {
-        this.poidSup = poidSup;
-    }
-
-    public int getPoidInf() {
-        return poidInf;
-    }
-
-    public void setPoidInf(int poidInf) {
-        this.poidInf = poidInf;
-    }
-}
