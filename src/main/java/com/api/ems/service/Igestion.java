@@ -1,13 +1,19 @@
 package com.api.ems.service;
 
-import java.util.List;
+import com.api.ems.entity.Tarif;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
-    public interface Igestion<T> {
+import java.util.List;
+import java.util.Optional;
+
+public interface Igestion<T> {
         public   T add(T objet);
-        public   T update(T objet);
-        public    void  delete();
-        public    T rechercher();
-        public List<T> lister();
-        public T imprimer();
+        List<T> list(Tarif objet);
+        T update(T objet,long id);
+    Optional<T> getOne(long id);
+    void delete(Long id);
+
+    public T print();
 
     }

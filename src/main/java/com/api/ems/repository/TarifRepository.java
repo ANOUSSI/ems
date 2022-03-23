@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface TarifRepository extends JpaRepository<Tarif,Long> {
 
 
-
 }
