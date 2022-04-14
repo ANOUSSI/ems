@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Igestion<T> {
-        public   T add(T objet);
-        List<T> list(Tarif objet);
+        T add(T objet);
+        List<T> list(T objet);
         T update(T objet,long id);
     Optional<T> getOne(long id);
     void delete(Long id);
-
     public T print();
 
     }

@@ -1,72 +1,30 @@
 package com.api.ems.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Agence {
+@Data
+@Entity
+public class Agence {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAgence;
     public String nom;
-    public String prenom;
     public String tel;
     public String fax;
     public String bp;
     public String adresse;
+    //Une agence contient plusieur postes
+@OneToMany(mappedBy = "agence")
+    public Collection<Poste> postes;
+//une agence contient plusieur utilisateur
+    @OneToMany(mappedBy = "agence")
+private  Collection<Utilisateur> utilisateurs;
 
-    public int getId_agence() {
-        return idAgence;
-    }
-
-    public void setId_agence(int id_agence) {
-        this.idAgence = id_agence;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getBp() {
-        return bp;
-    }
-
-    public void setBp(String bp) {
-        this.bp = bp;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
 }

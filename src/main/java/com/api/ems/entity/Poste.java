@@ -4,13 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import javax.persistence.*;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract  class Poste {
+@Data
+@Entity
+public  class Poste {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long idPost;
     private  int numero;
-    private  Destination designation;
+    private  String designation; 
     private  long idAgence;
+    //un poste est ratacher a une agence
+    @ManyToOne()
+    @JoinColumn(name = "agence_fk")
+    private  Agence agence;
 
 }
