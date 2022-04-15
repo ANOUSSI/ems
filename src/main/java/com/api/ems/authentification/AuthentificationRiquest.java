@@ -1,5 +1,7 @@
 package com.api.ems.authentification;
 
-public class AuthentificationRiquest {
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+public class AuthentificationRiquest  extends WebSecurityConfigurerAdapter {
 
 }
