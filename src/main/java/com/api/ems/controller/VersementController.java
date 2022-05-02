@@ -24,7 +24,7 @@ public class VersementController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path = "vsmt",name = "list  payement")
+    @GetMapping(path = "/vsmt",name = "list  payement")
     public List<Versement> versementList(Versement versement){
         return  this.gestion.list(versement);
     }
@@ -41,7 +41,6 @@ public class VersementController {
 @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(path = "/vsmt/{id}",name = "remove payement")
 public  void  removePayement(@PathVariable long id){
-
 
         this.gestion.delete(id);
     }

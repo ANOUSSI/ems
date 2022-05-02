@@ -34,7 +34,7 @@ public class AgenceController {
         return this.gestion.list(agence);
     }
 
-    @GetMapping(path = "/agence{/id}",name = "search agence")
+    @GetMapping(path = "/agence/{id}",name = "search agence")
 @ResponseStatus(HttpStatus.OK)
     public Optional<Agence> serachOne(@PathVariable long id){
         return  this.gestion.getOne(id);
@@ -47,7 +47,7 @@ public class AgenceController {
         return  this.gestion.update(agence,id);
 }
 
-@DeleteMapping(path = "/agence",name = "supprimer une agence")
+@DeleteMapping(path = "/agence/{id}",name = "supprimer une agence")
 @ResponseStatus(HttpStatus.NO_CONTENT)
 public  void  removeAgence(@PathVariable long id) {
     this.gestion.delete(id);

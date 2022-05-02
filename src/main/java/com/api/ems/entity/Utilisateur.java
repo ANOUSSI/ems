@@ -1,14 +1,17 @@
 package com.api.ems.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+
 @Entity
 public   class Utilisateur {
     @Id
@@ -24,6 +27,7 @@ public   class Utilisateur {
     @ManyToOne
     @JoinColumn(name="agence_fk")
     public Agence agence;
+
  public  void changeMP(){
  }
 

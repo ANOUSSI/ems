@@ -1,20 +1,19 @@
 package com.api.ems.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAgence;
+    private long idAgence;
     public String nom;
     public String tel;
     public String fax;
@@ -26,5 +25,6 @@ public class Agence {
 //une agence contient plusieur utilisateur
     @OneToMany(mappedBy = "agence")
 private  Collection<Utilisateur> utilisateurs;
+
 
 }
