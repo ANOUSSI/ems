@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

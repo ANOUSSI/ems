@@ -16,7 +16,7 @@ public  class Poste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long idPost;
     private  int numero;
-    private  String designation; 
+    private  String designation;
     private  long idAgence;
     //un poste est ratacher a une agence
     @ManyToOne()
