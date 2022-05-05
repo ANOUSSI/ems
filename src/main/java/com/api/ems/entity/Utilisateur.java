@@ -22,7 +22,8 @@ public   class Utilisateur {
     private  String prenom;
     private  String email;
     public String login;
-    public String motDePasse;
+    public String password;
+    public  boolean isAdmin;
     // un utilisateur apportient a une seule agence
     @ManyToOne
     @JoinColumn(name="agence_fk")

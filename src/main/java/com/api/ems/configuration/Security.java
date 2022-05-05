@@ -1,14 +1,16 @@
 package com.api.ems.configuration;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 public class Security extends WebSecurityConfigurerAdapter {
-    @Override
+   /* @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("anoussi")
@@ -17,7 +19,12 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("admin")
                 .password("admin")
-                .roles("USER");
+                .roles("USER","admin");
+    }*/
+
+    @Override
+    protected UserDetailsService userDetailsService() {
+        return new CustomUserDetailService();
     }
 
     @Override
@@ -25,8 +32,9 @@ public class Security extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .antMatchers("apiREST").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.GET,"/apiRest/tarif").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/apiRest/**/").hasRole("admin")
+                .anyRequest().hasRole("USER")
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
