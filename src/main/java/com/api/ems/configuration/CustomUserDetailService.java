@@ -1,4 +1,5 @@
 package com.api.ems.configuration;
+/*
 
 import com.api.ems.entity.Utilisateur;
 import com.api.ems.repository.UtilisateurRepository;
@@ -19,3 +20,4 @@ public class CustomUserDetailService implements UserDetailsService {
         return null;
     }
 }
+*/

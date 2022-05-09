@@ -5,12 +5,16 @@ import com.api.ems.exception.AgenceNotFounfException;
 import com.api.ems.exception.UtilisateurNotFounfException;
 import com.api.ems.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 @Service
-public class UtilisateurImpl implements Igestion<Utilisateur> {
+public class UtilisateurImpl implements Igestion<Utilisateur>, UserDetailsService {
     @Autowired
     private  UtilisateurRepository utilisateurRepository;
 
@@ -59,6 +63,15 @@ public class UtilisateurImpl implements Igestion<Utilisateur> {
     @Override
     public Utilisateur print() {
         return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Objects.requireNonNull(username);
+        Utilisateur user = utilisateurRepository.findUtilisateurWithName(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return user;
     }
 }
 

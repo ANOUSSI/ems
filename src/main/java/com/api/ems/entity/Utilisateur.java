@@ -4,8 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @AllArgsConstructor
@@ -13,7 +18,7 @@ import java.util.Collection;
 @Data
 
 @Entity
-public   class Utilisateur {
+public   class Utilisateur  implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  long idUser;
@@ -22,6 +27,7 @@ public   class Utilisateur {
     private  String prenom;
     private  String email;
     public String login;
+    private  String username;
     public String password;
     public  boolean isAdmin;
     // un utilisateur apportient a une seule agence
@@ -33,4 +39,33 @@ public   class Utilisateur {
  }
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }
